@@ -11,26 +11,33 @@ int main(){
 
     t0=clock();
 
-    Queue *roundRobinQ2;
+    Queue *priorityQueue;
 
-    roundRobinQ2 = new Queue(2,5,1);
+    priorityQueue = new Queue(0,1);
 
-    roundRobinQ2->setCapacity(8);
+    Proceso Pa,Pb,Pc,Pd,Pe,Pf,Pg;
 
-    string id = "Pa";
-    Proceso Pa;
-
-    Pa.crear(id,1.1,5);
-    //Pa.setID(id);
-    //Pa.setPriority(1);
-    //Pa.setRafaga(1.1);
-
-    roundRobinQ2->push(Pa);
-    roundRobinQ2->push(Pa);
-    //cout<< roundRobinQ2->pop().getId()<<endl;
-
-    roundRobinQ2->show();
+    Pa.crear("Pa",1.1,5);
+    Pb.crear("Pb",1.5,2);
+    Pc.crear("Pc",2.5,1);
+    Pd.crear("Pd",3.0,1);
+    Pe.crear("Pe",3.0,0);
+    Pf.crear("Pf",3.0,5);
+    Pg.crear("Pg",3.0,2);
     
+    priorityQueue->push(Pb);
+    priorityQueue->show();
+    priorityQueue->push(Pc);
+    priorityQueue->show();
+    priorityQueue->push(Pd);
+    priorityQueue->show();
+    priorityQueue->push(Pe);
+    priorityQueue->show();
+    priorityQueue->push(Pf);
+    priorityQueue->show();
+    priorityQueue->push(Pg);
+    priorityQueue->show();
+
     t1=clock();
 
     double time = (double(t1-t0)/CLOCKS_PER_SEC);

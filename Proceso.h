@@ -11,6 +11,7 @@ class Proceso{
         string id;
         double rafaga;
         int priority;
+        double tpoLlegada;
         double currentTime;
         double waitingTime;
 
@@ -27,6 +28,7 @@ class Proceso{
         string getId();
         double getRafaga();
         int getPriority();
+        double getTpoLlegada();
         double getCurrentTime();
         double getwaitingTime();
 
