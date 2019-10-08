@@ -12,12 +12,12 @@ class Queue{
         vector <Proceso> queue;
 
         void priorizar(Proceso);
-    
+
     public:
         //Queue(quantum,type)
         Queue(int, int);
         ~Queue();
-        
+
         string getNombre();
         int getQuantum();
         int getType();
@@ -27,7 +27,8 @@ class Queue{
         void setQuantum(int);
         void show();
         void push(Proceso);
-        
+        //void ordenar();
+
         Proceso pop();
 
 };

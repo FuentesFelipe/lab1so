@@ -24,7 +24,7 @@ int main(){
     Pe.crear("Pe",3.0,0);
     Pf.crear("Pf",3.0,5);
     Pg.crear("Pg",3.0,2);
-    
+
     priorityQueue->push(Pb);
     priorityQueue->show();
     priorityQueue->push(Pc);
@@ -35,6 +35,13 @@ int main(){
     priorityQueue->show();
     priorityQueue->push(Pf);
     priorityQueue->show();
+    priorityQueue->push(Pg);
+    priorityQueue->show();
+    priorityQueue->push(Pg);
+    priorityQueue->push(Pg);
+    priorityQueue->push(Pg);
+    priorityQueue->push(Pg);
+    priorityQueue->push(Pg);
     priorityQueue->push(Pg);
     priorityQueue->show();
 

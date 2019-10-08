@@ -31,6 +31,8 @@ class Proceso{
         double getTpoLlegada();
         double getCurrentTime();
         double getwaitingTime();
-
-
+        /*bool operator<(const Proceso& llave) const
+        {
+            return priority < llave.priority;
+        }*/
 };

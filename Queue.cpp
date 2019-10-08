@@ -1,6 +1,7 @@
 #include "Queue.h"
 #include <ctime>
 #include <iostream>
+//#include <algorithm>
 
 using namespace std;
 
@@ -44,7 +45,7 @@ void Queue::setQuantum(int quantum){
 }
 
 void Queue::priorizar(Proceso proceso){
-    vector<Proceso> vectorTemporal; 
+    vector<Proceso> vectorTemporal;
     bool notFinish=true;
     while(notFinish){
         if(this->isEmpty()){
@@ -63,7 +64,7 @@ void Queue::priorizar(Proceso proceso){
         }
 
     }
-    
+
     while(vectorTemporal.size()>0){
         this->queue.push_back(vectorTemporal[vectorTemporal.size() -1]);
         vectorTemporal.pop_back();
@@ -82,11 +83,11 @@ void Queue::show(){
 
     /**
      * PROVISORIO
-     * 
+     *
      */
     cout<<"Ready Queue: "<<endl;
     for (int index = 0; index < this->queue.size(); index++){
-        
+
         cout<<"| "<<this->queue[index].getId()<<" |";
     }
     cout<<endl<<endl;
@@ -94,14 +95,25 @@ void Queue::show(){
 }
 
 void Queue::push(Proceso proceso){
-    if(this->type==1){
-        this->priorizar(proceso);
+    if(this->elementos==10){
+        cout << "La ready queue se encuentra llena " << endl;
+    } else {
+        if(this->type==1){
+            this->priorizar(proceso);
+        } else {
+
+            this->queue.push_back(proceso);
     }
-    else{
-        this->queue.push_back(proceso);
-    }
-    this->elementos = this->elementos + 1;
+        this->elementos = this->elementos + 1;
 }
+}
+
+/*void Queue::ordenar(){
+    vector <Proceso> Priority;
+    Priority.assign(this->queue.begin(), this->queue.end());
+    sort(Priority.begin(), Priority.end());
+    this->queue.assign(Priority.begin(), Priority.end());
+}*/
 
 Proceso Queue::pop(){
 
