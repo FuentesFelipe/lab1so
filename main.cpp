@@ -1,54 +1,111 @@
 #include <iostream>
 #include <ctime>
-#include "Queue.h"
+#include "funciones.h"
 #include <string>
+#include <stdlib.h>
 
 using namespace std;
 
 int main(){
 
-    unsigned t0, t1;
-
-    t0=clock();
+    /**
+     * Inicialización de colas y variables globales
+     */
 
     Queue *priorityQueue;
+    Queue *roundrobinQ2;
+    Queue *roundrobinQ4;
+    Queue *fcfs;
 
-    priorityQueue = new Queue(0,1);
+    roundrobinQ2 = new Queue(2,1,"R-R Q = 2");
+    roundrobinQ4 = new Queue(4,1,"R-R Q = 4");
+    priorityQueue = new Queue(0,2, "Priority no apropiative");
+    fcfs =  new Queue(0,3,"FCFS");
 
-    Proceso Pa,Pb,Pc,Pd,Pe,Pf,Pg;
+    double seconds = 0;
+    int indexCola = 0;
+    int modulo=1;
+    int procesosTotales = 0;
 
-    Pa.crear("Pa",1.1,5);
-    Pb.crear("Pb",1.5,2);
-    Pc.crear("Pc",2.5,1);
-    Pd.crear("Pd",3.0,1);
-    Pe.crear("Pe",3.0,0);
-    Pf.crear("Pf",3.0,5);
-    Pg.crear("Pg",3.0,2);
+    bool quedanProcesos = true;
+    int quantum=0;
+    int opcion = 1;
+    bool seguir;
+    
+    while(modulo!=0){
+        modulo = mostrarMenu();
+        switch (modulo)
+        {
+        case 1:
+            seguir  = true;
+            while(seguir){
 
-    priorityQueue->push(Pb);
-    priorityQueue->show();
-    priorityQueue->push(Pc);
-    priorityQueue->show();
-    priorityQueue->push(Pd);
-    priorityQueue->show();
-    priorityQueue->push(Pe);
-    priorityQueue->show();
-    priorityQueue->push(Pf);
-    priorityQueue->show();
-    priorityQueue->push(Pg);
-    priorityQueue->show();
-    priorityQueue->push(Pg);
-    priorityQueue->push(Pg);
-    priorityQueue->push(Pg);
-    priorityQueue->push(Pg);
-    priorityQueue->push(Pg);
-    priorityQueue->push(Pg);
-    priorityQueue->show();
+                while(indexCola<4 && seguir){
 
-    t1=clock();
+                    while(quantum < 8 && seguir){
 
-    double time = (double(t1-t0)/CLOCKS_PER_SEC);
-    cout << "Execution Time: " << time << endl;
+                        system("clear");
+                        cout<<endl<<"Tiempo actual en quantum: "<<seconds<<endl;
+                        //showCPU(procesoDespachado(indexCola));
+                        cout<<endl<<"Ready Queues:"<<endl<<endl;
+                        roundrobinQ2->show();
+                        roundrobinQ4->show();
+                        priorityQueue->show();
+                        fcfs->show();
+                        cout<<" Presione cualquier número para contiuar, cero para terminar:";
+                        cin>>opcion;
+                        seguir = continuar(opcion);
+                        if(continuar){
+                            seconds++;
+                        }
+
+                        
+                    }
+                }
+
+            }
+            break;
+
+        case 2:
+            roundrobinQ2->push(crearProceso());
+
+            break;
+        
+        case 3:
+
+            cout<<"hoola";
+            cout<<" Presione cualquier número para contiuar, cero para terminar:";
+            cin>>opcion;
+            seguir = continuar(opcion);
+            break;
+        case 4:
+
+            cout<<"hoola";
+            cout<<" Presione cualquier número para contiuar, cero para terminar:";
+            cin>>opcion;
+            seguir = continuar(opcion);
+            break;
+        case 5:
+
+            cout<<"hoola";
+            cout<<" Presione cualquier número para contiuar, cero para terminar:";
+            cin>>opcion;
+            seguir = continuar(opcion);
+            break;
+
+        default:
+            
+            break;
+        }
+    }
+
+    
+
+    cout<<"finish";
+    //t1=clock();
+
+    //double time = (double(t1-t0)/CLOCKS_PER_SEC);
+    //cout << "Execution Time: " << time << endl;
 
     return 0;
 }

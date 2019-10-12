@@ -9,7 +9,7 @@ Se simula la parte de administración de procesos desde la Ready Queue de un sis
 ### Linux
 
 * >$ cd lab1so
-* >$ g++ main.cpp -o programa Queue.h Queue.cpp Proceso.cpp Proceso.h
+* >$ g++ main.cpp -o programa Queue.h Queue.cpp Proceso.cpp Proceso.h funciones.h funciones.cpp
 * >$ ./programa
 
 ### Windows

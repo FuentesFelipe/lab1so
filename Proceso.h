@@ -19,6 +19,7 @@ class Proceso{
 
         Proceso();
         ~Proceso();
+        //nuevoProceso();
         void crear(string,double,int);
         void show();
         void setRafaga(double);

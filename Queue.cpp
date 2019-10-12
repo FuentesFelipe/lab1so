@@ -5,7 +5,8 @@
 
 using namespace std;
 
-Queue::Queue(int quantum, int type){
+Queue::Queue(int quantum, int type, string name){
+    this->nombre = name;
     this->quantum = quantum;
     this->type = type;
     this->elementos = 0;
@@ -74,8 +75,8 @@ void Queue::priorizar(Proceso proceso){
 
 void Queue::show(){
 
-    //cout<<endl<<"Nombre Cola: "<<this->nombre<<endl;
-    cout<<endl<<"Tipo cola: "<<this->type<<endl;
+    cout<<endl<<this->nombre<<endl;
+    
     if(this->type==1){
         cout<<"Quantum: "<<this->quantum<<endl;
     }

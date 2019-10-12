@@ -14,8 +14,7 @@ class Queue{
         void priorizar(Proceso);
 
     public:
-        //Queue(quantum,type)
-        Queue(int, int);
+        Queue(int, int, string);
         ~Queue();
 
         string getNombre();

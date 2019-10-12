@@ -4,8 +4,22 @@
 
 Proceso::Proceso(){
 
-}
 
+}
+/**
+ * Proceso::nuevoProceso(){
+
+        cout<<endl<<" === NUEVO PROCESO ===="<<endl<<endl
+        <<"Nombre: ";
+        cin>>this->id;
+        cout<<"Rafaga: ";
+        cin>>this->rafaga;
+        cout<<"Prioridad: ";
+        cin>>this->priority;
+    }
+
+ * 
+ */
 Proceso::~Proceso(){}
 
 void Proceso::show(){
