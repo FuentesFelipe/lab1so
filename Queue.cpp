@@ -41,6 +41,30 @@ bool Queue::isEmpty(){
     return response;
 }
 
+bool Queue::thisProc(string nombre) {
+    for (int index = 0; index < this->queue.size(); index++){
+
+        if(nombre == (this->queue[index].getId())) {
+            return true;
+        }
+    }
+    return false;
+}
+
+int Queue::getIndex(string nombre) {
+    for (int index = 0; index < this->queue.size(); index++){
+
+        if(nombre == (this->queue[index].getId())) {
+            return index;
+        }
+    }
+    return 9999;
+}
+
+void Queue::removeProc(string nombre, int index) {
+    this->queue.erase(this->queue.begin()+index);
+}
+
 void Queue::setQuantum(int quantum){
     this->quantum = quantum;
 }
@@ -76,7 +100,7 @@ void Queue::priorizar(Proceso proceso){
 void Queue::show(){
 
     cout<<endl<<this->nombre<<endl;
-    
+
     if(this->type==1){
         cout<<"Quantum: "<<this->quantum<<endl;
     }

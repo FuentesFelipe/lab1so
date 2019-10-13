@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1570928551 source:c:\lab1so\main.cpp
+	<iostream>
+	<ctime>
+	"funciones.h"
+	<string>
+	<stdlib.h>
+
+1570927867 c:\lab1so\funciones.h
+	"Queue.h"
+
+1570924037 c:\lab1so\queue.h
+	<vector>
+	<string>
+	"Proceso.h"
+
+1570910923 c:\lab1so\proceso.h
+	<vector>
+	<string>
+	<ctime>
+
+1570910923 source:c:\lab1so\proceso.cpp
+	"Proceso.h"
+	<iostream>
+	<ctime>
+
+1570924533 source:c:\lab1so\queue.cpp
+	"Queue.h"
+	<ctime>
+	<iostream>
+
+1570928098 source:c:\lab1so\funciones.cpp
+	<iostream>
+	<stdlib.h>
+	"funciones.h"
+

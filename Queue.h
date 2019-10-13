@@ -22,6 +22,9 @@ class Queue{
         int getType();
         int getElementos();
         bool isEmpty();
+        bool thisProc(string);
+        int getIndex(string);
+        void removeProc(string, int);
 
         void setQuantum(int);
         void show();
