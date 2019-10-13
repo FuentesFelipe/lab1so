@@ -6,20 +6,16 @@ Proceso::Proceso(){
 
 
 }
-/**
- * Proceso::nuevoProceso(){
+void Proceso::copiarProceso(Proceso proceso){
 
-        cout<<endl<<" === NUEVO PROCESO ===="<<endl<<endl
-        <<"Nombre: ";
-        cin>>this->id;
-        cout<<"Rafaga: ";
-        cin>>this->rafaga;
-        cout<<"Prioridad: ";
-        cin>>this->priority;
+        this->id= proceso.getId();
+        this->priority = proceso.getPriority();
+        this->rafaga = proceso.getRafaga();
+        this->tpoLlegada = proceso.getTpoLlegada();
+        this->currentTime = proceso.getCurrentTime();
+        this->waitingTime = proceso.getwaitingTime();
     }
 
- * 
- */
 Proceso::~Proceso(){}
 
 void Proceso::show(){
@@ -32,12 +28,11 @@ void Proceso::show(){
         <<endl<<"waiting time: "<<this->waitingTime;
 }
 
-void Proceso::crear(string id ,double rafaga ,int priority){
-    unsigned tiempo = clock();
-    this->id = id;
+void Proceso::crear(string nombre ,double rafaga ,int priority, double time){
+    this->id = nombre;
     this->rafaga = rafaga;
     this->priority = priority;
-    this->tpoLlegada = double(tiempo/CLOCKS_PER_SEC);
+    this->tpoLlegada = time;
     this->currentTime = this->rafaga;
     this->waitingTime = 0;
 }
@@ -76,4 +71,8 @@ double Proceso::getCurrentTime(){
 
 double Proceso::getwaitingTime(){
     return this->waitingTime;
+}
+
+void Proceso::setCurrentTime(){
+    this->currentTime--;
 }

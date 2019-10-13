@@ -9,7 +9,6 @@ Queue::Queue(int quantum, int type, string name){
     this->nombre = name;
     this->quantum = quantum;
     this->type = type;
-    this->elementos = 0;
 }
 
 Queue::~Queue(){}
@@ -28,7 +27,7 @@ int Queue::getType(){
 
 int Queue::getElementos(){
 
-    return this->elementos;
+    return this->queue.size();
 }
 
 bool Queue::isEmpty(){
@@ -41,8 +40,20 @@ bool Queue::isEmpty(){
     return response;
 }
 
-void Queue::setQuantum(int quantum){
-    this->quantum = quantum;
+void Queue::setQuantum(){
+    this->quantum --;
+}
+
+void Queue::restartQuantum(int index){
+    if(index==1){
+        this->quantum = 2;
+    } else if (index==2){
+        this->quantum = 4;
+    }
+    {
+        /* code */
+    }
+
 }
 
 void Queue::priorizar(Proceso proceso){
@@ -76,27 +87,30 @@ void Queue::priorizar(Proceso proceso){
 void Queue::show(){
 
     cout<<endl<<this->nombre<<endl;
+    int elementos = this->getElementos();
     
     if(this->type==1){
         cout<<"Quantum: "<<this->quantum<<endl;
     }
-    cout<<"Elementos: "<<this->elementos<<endl;
+    cout<<"Elementos: "<<elementos<<endl;
 
     /**
      * PROVISORIO
      *
      */
-    cout<<"Ready Queue: "<<endl;
-    for (int index = 0; index < this->queue.size(); index++){
+    if(this->getElementos()!=0){
+        cout<<"Ready Queue: "<<endl;
+        for (int index = 0; index < this->queue.size(); index++){
 
-        cout<<"| "<<this->queue[index].getId()<<" |";
+            cout<<"| "<<this->queue[index].getId()<<" |";
+        }
     }
     cout<<endl<<endl;
 
 }
 
 void Queue::push(Proceso proceso){
-    if(this->elementos==10){
+    if(this->getElementos()==10){
         cout << "La ready queue se encuentra llena " << endl;
     } else {
         if(this->type==1){
@@ -105,8 +119,7 @@ void Queue::push(Proceso proceso){
 
             this->queue.push_back(proceso);
     }
-        this->elementos = this->elementos + 1;
-}
+    }
 }
 
 /*void Queue::ordenar(){
@@ -120,6 +133,16 @@ Proceso Queue::pop(){
 
     Proceso proceso = this->queue[ this->queue.size() -1];
     this->queue.pop_back();
-    this->elementos = this->elementos -1;
     return proceso;
+}
+
+Proceso Queue::popFirst(){
+
+    Proceso primerProcesoEnCola;
+    primerProcesoEnCola.crear(this->queue[0].getId(),this->queue[0].getRafaga(),this->queue[0].getPriority(),this->queue[0].getTpoLlegada());
+    for(int i=0;i<this->queue.size() -1;i++){
+        this->queue[i] = this->queue[i+1];
+    }
+    this->queue.pop_back();
+    return primerProcesoEnCola;
 }

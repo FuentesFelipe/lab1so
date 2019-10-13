@@ -19,11 +19,12 @@ class Proceso{
 
         Proceso();
         ~Proceso();
-        //nuevoProceso();
-        void crear(string,double,int);
+        void copiarProceso(Proceso);
+        void crear(string,double,int, double);
         void show();
         void setRafaga(double);
         void setPriority(int);
+        void setCurrentTime();
         void setID(string);
 
         string getId();

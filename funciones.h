@@ -1,6 +1,10 @@
 #include "Queue.h"
 
-void showCPU(Proceso&);
+void showCPU(Proceso);
 int mostrarMenu();
 bool continuar(int);
-Proceso crearProceso();
+Proceso crearProceso(double);
+string nombre();
+int rafaga();
+int prioridad();
+

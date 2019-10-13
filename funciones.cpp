@@ -17,12 +17,13 @@ int mostrarMenu(){
     system("clear");
     return opcion;
 }
-Proceso crearProceso(){
+Proceso crearProceso(double seconds){
 
     Proceso proceso;
     string nombre;
     double rafagas;
     int prioridad;
+    int nada;
 
     cout<<endl<<"Crear nuevo proceso."<<endl<<endl<<"Nombre: ";
     cin>>nombre;
@@ -30,13 +31,11 @@ Proceso crearProceso(){
     cin>>rafagas;
     cout<<endl<<"Prioridad: ";
     cin>>prioridad;
-
-    proceso.crear(nombre,rafagas,prioridad);  
-    system("clear");
+    proceso.crear(nombre,rafagas,prioridad,seconds);  
 }
 string space = "     ";
 
-void showCPU(Proceso &proceso){
+void showCPU(Proceso proceso){
     cout<<endl<<space<<"  CPU"<<endl;
     cout<<space<<" ====="<<endl;
     cout<<space<<" | "<<proceso.getId()<<" |"<< "tiempo restante: "<<proceso.getCurrentTime()<<endl;
@@ -51,4 +50,24 @@ bool continuar(int continuar){
         return false;
     }
     
+}
+
+string nombre(){
+    string nombre;
+    cout<<"Nombre : ";
+    cin>>nombre;
+    return nombre;
+}
+
+int prioridad(){
+    int prioridad;
+    cout<<"prioridad : ";
+    cin>>prioridad;
+    return prioridad;
+}
+int rafaga(){
+    int rafaga;
+    cout<<"rafaga : ";
+    cin>>rafaga;
+    return rafaga;
 }
