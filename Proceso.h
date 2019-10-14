@@ -9,30 +9,30 @@ class Proceso{
     private:
 
         string id;
-        double rafaga;
+        float rafaga;
         int priority;
-        double tpoLlegada;
-        double currentTime;
-        double waitingTime;
+        float tpoLlegada;
+        float currentTime;
+        float waitingTime;
 
     public:
 
         Proceso();
         ~Proceso();
         void copiarProceso(Proceso);
-        void crear(string,double,int, double);
+        void crear(string,float,int,float);
         void show();
-        void setRafaga(double);
+        void setRafaga(float);
         void setPriority(int);
-        void setCurrentTime();
+        void setCurrentTime(float);
         void setID(string);
 
         string getId();
-        double getRafaga();
+        float getRafaga();
         int getPriority();
-        double getTpoLlegada();
-        double getCurrentTime();
-        double getwaitingTime();
+        float getTpoLlegada();
+        float getCurrentTime();
+        float getwaitingTime();
         /*bool operator<(const Proceso& llave) const
         {
             return priority < llave.priority;

@@ -22,7 +22,7 @@ class Queue{
         int getElementos();
         bool isEmpty();
 
-        void setQuantum();
+        void setQuantum(double);
         void restartQuantum(int);
         void show();
         void push(Proceso);

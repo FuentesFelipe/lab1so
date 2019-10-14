@@ -40,7 +40,7 @@ bool Queue::isEmpty(){
     return response;
 }
 
-void Queue::setQuantum(){
+void Queue::setQuantum(double quantum){
     this->quantum --;
 }
 
@@ -105,7 +105,7 @@ void Queue::show(){
             cout<<"| "<<this->queue[index].getId()<<" |";
         }
     }
-    cout<<endl<<endl;
+    cout<<endl;
 
 }
 
@@ -118,7 +118,16 @@ void Queue::push(Proceso proceso){
         } else {
 
             this->queue.push_back(proceso);
-    }
+            /**
+             * this->queue.push_back(proceso);
+                for (int i = this->queue.size() -1; i > 0; i--){
+                    this->queue[i] = this->queue[i--];
+                }
+                
+                this->queue[0] = proceso;   
+             *  */        
+
+            }
     }
 }
 
@@ -131,7 +140,9 @@ void Queue::push(Proceso proceso){
 
 Proceso Queue::pop(){
 
-    Proceso proceso = this->queue[ this->queue.size() -1];
+    int final = this->queue.size()-1;
+    Proceso proceso;
+    proceso.crear(this->queue[final].getId(),this->queue[final].getRafaga(),this->queue[final].getPriority(),this->queue[final].getTpoLlegada());
     this->queue.pop_back();
     return proceso;
 }

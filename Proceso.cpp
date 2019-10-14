@@ -24,20 +24,19 @@ void Proceso::show(){
         <<endl<<"Rafaga: "<<this->rafaga
         <<endl<<"Prioridad: "<<this->priority
         <<endl<<"Tpo Llegada: "<<this->tpoLlegada
-        <<endl<<"rafaga restante: "<<this->rafaga
-        <<endl<<"waiting time: "<<this->waitingTime;
+        <<endl<<"rafaga restante: "<<this->rafaga<<endl<<endl;
 }
 
-void Proceso::crear(string nombre ,double rafaga ,int priority, double time){
+void Proceso::crear(string nombre ,float rafaga ,int priority, float t0){
     this->id = nombre;
     this->rafaga = rafaga;
     this->priority = priority;
-    this->tpoLlegada = time;
+    this->tpoLlegada = float(clock() - t0)*10/CLOCKS_PER_SEC;
     this->currentTime = this->rafaga;
     this->waitingTime = 0;
 }
 
-void Proceso::setRafaga(double rafaga){
+void Proceso::setRafaga(float rafaga){
     this->rafaga = rafaga;
 }
 
@@ -53,7 +52,7 @@ std::string Proceso::getId(){
     return this->id;
 }
 
-double Proceso::getRafaga(){
+float Proceso::getRafaga(){
     return this->rafaga;
 }
 
@@ -61,18 +60,18 @@ int Proceso::getPriority(){
     return this->priority;
 }
 
-double Proceso::getTpoLlegada(){
+float Proceso::getTpoLlegada(){
     return this->tpoLlegada;
 }
 
-double Proceso::getCurrentTime(){
+float Proceso::getCurrentTime(){
     return this->currentTime;
 }
 
-double Proceso::getwaitingTime(){
+float Proceso::getwaitingTime(){
     return this->waitingTime;
 }
 
-void Proceso::setCurrentTime(){
-    this->currentTime--;
+void Proceso::setCurrentTime(float tiempo){
+    this->currentTime -= tiempo;
 }
