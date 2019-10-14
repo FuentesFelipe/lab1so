@@ -52,6 +52,72 @@ int main(){
         {
         case 1:
 
+            /*
+                *tADMinicial = clock();
+                while( 10 > double(double(tADMinicial)/CLOCKS_PER_SEC) ){
+
+                    
+                    cout<< double(double(tADMinicial)/CLOCKS_PER_SEC)<<endl;
+                    tADMinicial = clock();
+
+                }
+
+            *  */
+            
+            while(continuar(listaDeProcesos.size())){
+                
+                tADMinicial = clock();
+                tADMactual = clock();
+                //&& !listaDeColas[indexCola]->isEmpty()
+                while( QUANTUMADM > (double(tADMactual - tADMinicial))*10/CLOCKS_PER_SEC  ){
+
+                    
+                    tADMactual= clock();
+
+                    if(indexCola<2){
+                        
+
+                        tQueueinicial = clock();
+                        tQueueactual = clock();
+
+                        while(listaDeColas[indexCola]->getQuantum() > (double(tQueueactual - tQueueinicial))*10/CLOCKS_PER_SEC){
+
+                            system("clear");
+                            printRealTime(tADMactual, tADMinicial);
+                            cout<<"INDEXCOLA"<<indexCola<<endl;
+                            cout<<listaDeProcesos.size()<<" 8>"<< (double(tADMactual - tADMinicial)*10/CLOCKS_PER_SEC)<<" = " <<(QUANTUMADM >(double(tADMactual -tADMinicial)*10/CLOCKS_PER_SEC))  <<endl;
+                            cout<<"atendiendo a "<<listaDeColas[indexCola]->getNombre()<<endl;
+
+                            cout<<" time Queue "<< (double(tQueueactual - tQueueinicial)*10/CLOCKS_PER_SEC)<<" 2 > time =" <<((listaDeColas[indexCola]->getQuantum()>(double(tQueueactual -tQueueinicial)*10/CLOCKS_PER_SEC)))  <<endl;
+
+                            //printQueueTime(tQueueactual,tQueueinicial);
+
+                            tQueueactual = clock();
+                        }
+
+
+                    } else{
+                        
+                         system("clear");
+                            printRealTime(tADMactual, tADMinicial);
+                            cout<<"INDEXCOLA"<<indexCola<<endl;
+                            cout<<listaDeProcesos.size()<<" 8>"<< (double(tADMactual - tADMinicial)*10/CLOCKS_PER_SEC)<<" = " <<(QUANTUMADM >(double(tADMactual -tADMinicial)*10/CLOCKS_PER_SEC))  <<endl;
+                            cout<<"atendiendo a "<<listaDeColas[indexCola]->getNombre()<<endl;
+
+                    }
+                    
+
+                }
+                listaDeProcesos.pop_back();
+                if(indexCola==3){
+                    indexCola = -1;
+                }
+                indexCola++;
+                
+            }
+
+
+
         /**
          * 	clock_t tf,ti;
             int valor = 4;
@@ -65,29 +131,31 @@ int main(){
             cout<<float(tf-ti)*10/CLOCKS_PER_SEC;
          */
 
-            while (continuar(procesos)){
+           /**
+            *  while (continuar(procesos)){
 
                 tADMinicial = clock();
                 tADMactual = clock();
                 
-                while(QUANTUMADM > deltaTime(tADMactual,tADMinicial) && !listaDeColas[indexCola]->isEmpty()){
+                while(double(tADMactual-tADMinicial)*10/CLOCKS_PER_SEC < QUANTUMADM   || !listaDeColas[indexCola]->isEmpty()){
                     
                     procesoEnCPU.copiarProceso(listaDeColas[indexCola]->pop());
                     if(indexCola<2){
 
                         tQueueinicial = clock();
                         tQueueactual = clock();
+                        tADMactual = clock();
                         //termino = true;
 
                         termino = false;
 
-                        while(listaDeColas[indexCola]->getQuantum()> deltaTime(tQueueactual,tQueueinicial) && !termino){
+                        while(listaDeColas[indexCola]->getQuantum()> double(tQueueactual-tQueueinicial)*10/CLOCKS_PER_SEC || !termino){
                             system("clear");
-                            cout<<"proces en la lista: "<<listaDeProcesos.size()<<endl;
                             printRealTime(tQueueactual,ti);
                             cout<<endl<<"Atendiendo cola "<<listaDeColas[indexCola]->getNombre()<<endl;
+                            cout<<"  ----- -- "<< double(tQueueactual-tQueueinicial)*10/CLOCKS_PER_SEC <<endl;
                             printQueueTime(tQueueactual,ti);                            
-                            procesoEnCPU.setCurrentTime(deltaTime(tQueueactual,tQueueinicial));
+                            procesoEnCPU.setCurrentTime(double(tQueueactual-tQueueinicial)/CLOCKS_PER_SEC);
                             
                             showCPU(procesoEnCPU);
                             showAllQueues(listaDeColas);
@@ -116,10 +184,9 @@ int main(){
                             cout<<endl<<"Atendiendo cola "<<listaDeColas[indexCola]->getNombre()<<endl;
                             printQueueTime(tQueueactual,ti);                          
 
-                            procesoEnCPU.setCurrentTime(deltaTime(tADMactual,tADMinicial));
+                            procesoEnCPU.setCurrentTime(double(tADMactual-tADMinicial)/CLOCKS_PER_SEC);
                             showCPU(procesoEnCPU);
                             showAllQueues(listaDeColas);
-                            tADMactual = clock();
                         }
                         
                     }
@@ -140,6 +207,8 @@ int main(){
             cout<<"Pulse algo para salir.."<<endl;
             cin>>opcion;
             seguir = continuar(opcion);
+            * 
+            */
             
             break;
 

@@ -77,7 +77,7 @@ double deltaTime(clock_t final, clock_t inicio){
 
 void printRealTime(clock_t time, clock_t inicio){
     cout<<" =============== "<<endl
-        <<" TIME : "<<float(deltaTime(time,inicio))<<endl
+        <<" TIME : "<<double(double(time-inicio)*10/CLOCKS_PER_SEC)<<endl
         <<" ==============="<<endl;
 }
 
