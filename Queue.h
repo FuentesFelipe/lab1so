@@ -8,7 +8,6 @@ class Queue{
         string nombre;
         int quantum;
         int type;
-        int elementos;
         vector <Proceso> queue;
 
         void priorizar(Proceso);
@@ -23,11 +22,13 @@ class Queue{
         int getElementos();
         bool isEmpty();
 
-        void setQuantum(int);
+        void setQuantum(double);
+        void restartQuantum(int);
         void show();
         void push(Proceso);
         //void ordenar();
 
         Proceso pop();
+        Proceso popFirst();
 
 };
