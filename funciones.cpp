@@ -4,14 +4,14 @@
 using namespace std;
 
 int mostrarMenu(){
-    system("clear");
+    system("cls");
     int opcion;
     cout<<"1) Ver entorno"<<endl
     <<"2) Crear proceso"<<endl
     <<"0) Salir"<<endl
     <<endl<<"opcion:";
     cin>>opcion;
-    system("clear");
+    system("cls");
     return opcion;
 }
 Proceso crearProceso(){
@@ -29,7 +29,7 @@ Proceso crearProceso(){
     cin>>prioridad;
 
     proceso.crear(nombre,rafagas,prioridad,float(clock()));  
-    system("clear");
+    system("cls");
 }
 string space = "     ";
 

@@ -69,7 +69,7 @@ int main(){
 
                         while(listaDeColas[indexCola]->getQuantum() > (double(tQueueactual - tQueueinicial))*10/CLOCKS_PER_SEC && !terminado){
 
-                            system("clear");
+                            system("cls");
                             printRealTime(tADMactual, ti);
                             cout<<"atendiendo a "<<listaDeColas[indexCola]->getNombre()<<endl;
 
@@ -98,7 +98,7 @@ int main(){
                         terminado = false;
                         while(procesoEnCPU.getCurrentTime()>0 && QUANTUMADM > (double(tADMactual - tPF))*10/CLOCKS_PER_SEC ){
                             
-                            system("clear");
+                            system("cls");
                             printRealTime(tADMactual, ti);
                             cout<<"atendiendo a "<<listaDeColas[indexCola]->getNombre()<<endl;
                             procesoEnCPU.setCurrentTime(tADMactual,tPF);
@@ -144,7 +144,7 @@ int main(){
             seguir = true;
             while (seguir)
             {
-                system("clear");
+                system("cls");
                 showAllProcess(listaDeProcesos);
                 cout<<endl<<"Crear nuevo proceso."<<endl;
                 proceso.crear(nombre(),rafaga(),prioridad(),ti);
