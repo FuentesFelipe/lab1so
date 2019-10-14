@@ -10,9 +10,9 @@ void Proceso::copiarProceso(Proceso proceso){
 
         this->id= proceso.getId();
         this->priority = proceso.getPriority();
-        this->rafaga = proceso.getRafaga();
+        this->rafaga = proceso.getCurrentTime();
         this->tpoLlegada = proceso.getTpoLlegada();
-        this->currentTime = proceso.getCurrentTime();
+        this->currentTime = proceso.getRafaga();
         this->waitingTime = proceso.getwaitingTime();
     }
 
@@ -72,6 +72,6 @@ float Proceso::getwaitingTime(){
     return this->waitingTime;
 }
 
-void Proceso::setCurrentTime(float tiempo){
-    this->currentTime -= tiempo;
+void Proceso::setCurrentTime(clock_t fin, clock_t inicio){
+    this->currentTime = this->rafaga -  double(fin - inicio)*10/CLOCKS_PER_SEC;
 }

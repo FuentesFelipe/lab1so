@@ -24,7 +24,7 @@ class Proceso{
         void show();
         void setRafaga(float);
         void setPriority(int);
-        void setCurrentTime(float);
+        void setCurrentTime(clock_t,clock_t);
         void setID(string);
 
         string getId();
